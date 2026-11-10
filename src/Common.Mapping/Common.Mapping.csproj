@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<!--
+		Zero-dependency object mapper with an AutoMapper-style API
+		(Profile / CreateMap / ForMember / ReverseMap / IMapper.Map ...).
+
+		Public namespace: Common.Mapping. It deliberately does NOT reuse the `AutoMapper`
+		namespace, so it can live side by side with the real package in any project.
+		Migrating from AutoMapper: replace `using AutoMapper;` with `using Common.Mapping;`
+		and `services.AddAutoMapper(...)` with `services.AddCommonMapping(...)`.
+
+		Supported subset (parity-tested against AutoMapper 12.0.1, see tests/Common.Mapping.ParityCheck):
+		CreateMap / ForMember(MapFrom|Ignore) / Condition / ForAllMembers / ReverseMap /
+		ConstructUsing / AfterMap / two-arg in-place Map / nested + collection mapping /
+		flattening / numeric+nullable+enum conversion / constructor binding.
+		NOT implemented: ProjectTo, ITypeConverter, IValueResolver, ConvertUsing,
+		Include/inheritance maps, open-generic maps, pre/post-processors, dictionary mapping.
+	-->
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<!-- The engine is reflection-heavy and deals with nulls pervasively; nullable off keeps it terse. -->
+		<Nullable>disable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>latest</LangVersion>
+		<RootNamespace>Common.Mapping</RootNamespace>
+		<AssemblyName>Common.Mapping</AssemblyName>
+		<PackageId>Common.Mapping</PackageId>
+		<Title>Common object mapper (AutoMapper-style API)</Title>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);CS1591</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<!--
+		Parity harness: runs identical mapping configs through the REAL AutoMapper 12.0.1
+		(namespace `AutoMapper`) and Common.Mapping (namespace `Common.Mapping`), then diffs
+		the output. Not shipped; a developer verification tool.
+		Run from the repo root: dotnet run (with the project option) tests/Common.Mapping.ParityCheck
+	-->
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>disable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AssemblyName>Common.Mapping.ParityCheck</AssemblyName>
+		<IsPackable>false</IsPackable>
+		<!-- AutoMapper 12.0.1 carries advisory NU1903; acceptable here because this tool only compares behavior. -->
+		<NoWarn>$(NoWarn);NU1903</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="12.0.1" />
+		<ProjectReference Include="..\..\src\Common.Mapping\Common.Mapping.csproj" />
+	</ItemGroup>
+
+</Project>

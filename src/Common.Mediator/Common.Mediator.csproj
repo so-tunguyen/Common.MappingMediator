@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<!--
+		Zero-dependency request/handler mediator with a MediatR-style API
+		(IRequest<T> / IRequestHandler<TRequest,TResponse> / IMediator.Send).
+
+		Public namespace: Common.Mediator. It deliberately does NOT reuse the `MediatR`
+		namespace, so it can live side by side with the real package in any project.
+		Migrating from MediatR: replace `using MediatR;` with `using Common.Mediator;`
+		and `services.AddMediatR(...)` with `services.AddCommonMediator(...)`.
+
+		Not implemented: notifications (INotification/IPublisher), pipeline behaviors,
+		streams, pre/post-processors.
+	-->
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>latest</LangVersion>
+		<RootNamespace>Common.Mediator</RootNamespace>
+		<AssemblyName>Common.Mediator</AssemblyName>
+		<PackageId>Common.Mediator</PackageId>
+		<Title>Common mediator (MediatR-style API)</Title>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);CS1591</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
+	</ItemGroup>
+
+</Project>

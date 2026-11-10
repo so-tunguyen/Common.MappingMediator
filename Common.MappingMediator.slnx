@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Common.Mapping/Common.Mapping.csproj" />
+    <Project Path="src/Common.Mediator/Common.Mediator.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Common.Mapping.ParityCheck/Common.Mapping.ParityCheck.csproj" />
+  </Folder>
+</Solution>
